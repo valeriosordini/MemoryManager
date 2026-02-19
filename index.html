@@ -7,16 +7,30 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h3>Tecnica di allocazione: First Fit</h3>
+    <h3>Tecnica di allocazione: Partizioni fisse</h3>
+    <h3>Algoritmo di allocazione processi: First fit</h3>
     
     <p>
-    Il processo viene inserito nel primo blocco di memoria libero abbastanza grande.
-    Se il blocco è più grande del necessario, lo spazio rimanente resta libero.
+    L'allocazione a partizioni fisse è una tecnica di gestione della memoria in cui
+    la memoria principale è suddivisa in blocchi di dimensioni predefinite e 
+    statiche, ciascuno in grado di ospitare un singolo processo.
+    <br>Il First Fit è un algoritmo di allocazione dinamica della memoria 
+    utilizzato dai sistemi operativi per assegnare blocchi di memoria RAM ai 
+    processi in esecuzione. Nel contesto dell'allocazione a partizione fissa è una 
+    tecnica di gestione della memoria principale in cui il sistema operativo 
+    assegna un processo alla prima partizione libera sufficientemente grande a 
+    contenerlo, partendo dall'inizio della memoria.
     </p>
     
     <label>Dimensione processo (MB): </label>
     <input type="number" id="size">
-    <button id="btn">Alloca</button>
+    <button id="btn" onclick="alloca()">Alloca</button>
+    
+    <p>numero processi allocati:</p>
+    <p>memoria disponibile:</p>
+    
+    <!-- da fare: testi sopra, funzione alloca, messaggio errore se input è
+    troppo grande, rivedere testo -->
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
     <script src="script.js"></script>
