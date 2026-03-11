@@ -26,11 +26,9 @@
     <input type="number" id="size">
     <button id="btn" onclick="alloca()">Alloca</button>
     
-    <p>numero processi allocati:</p>
-    <p>memoria disponibile:</p>
-    
-    <!-- da fare: testi sopra, funzione alloca, messaggio errore se input è
-    troppo grande, rivedere testo -->
+    <p>numero processi allocati: <span id="nProc">0</span></p>
+    <p>memoria disponibile: <span id="memLib">370</span> MB</p>
+    <p id="errMsg" style="color:red"></p>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
     <script src="script.js"></script>
