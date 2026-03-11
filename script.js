@@ -31,18 +31,36 @@ function draw() {
 }
 
 function alloca() {
-  let size = int(select('#size').value());
-  //verifica se input è troppo grande
-  
+  let size = int(select('#size').value()); // legge la dimensione dal campo input
+  document.getElementById('errMsg').textContent = ""; // pulisce errore precedente
+
+  // verifica se input è troppo grande o non valido
+  if (isNaN(size) || size <= 0) {
+    document.getElementById('errMsg').textContent = "Inserisci un valore valido.";
+    return; // esce senza allocare
+  }
+
   // First Fit: trova il primo blocco libero sufficientemente grande
   let allocato = false; // boolean per verificare se il processo è stato allocato
   for (let i = 0; i < ramBlocks.length; i++) {
     if (!allocated[i] && size <= ramBlocks[i] && !allocato) {
-      allocated[i] = true;
+      allocated[i] = true; // segna il blocco come occupato
       allocato = true; 
     }
   }
 
-  // aggiornamento informazioni sopra
-}
+  // messaggio errore se nessun blocco era adatto
+  if (!allocato) {
+    document.getElementById('errMsg').textContent = "Nessun blocco disponibile per " + size + " MB.";
+  }
 
+  // aggiornamento informazioni sopra
+  let nProc = 0;  // conta i blocchi occupati
+  let memLib = 0; // somma i blocchi liberi
+  for (let i = 0; i < ramBlocks.length; i++) {
+    if (allocated[i]) nProc++;       // blocco occupato: incrementa contatore
+    else memLib += ramBlocks[i];     // blocco libero: aggiunge la sua dimensione
+  }
+  document.getElementById('nProc').textContent = nProc;   // aggiorna il testo
+  document.getElementById('memLib').textContent = memLib; // aggiorna il testo
+}
